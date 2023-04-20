@@ -1,5 +1,5 @@
 
-## Time Synchronization
+## Time Synchronization (already installed)
 
 ```
 [webserver@projet ~]$ sudo systemctl start chronyd && sudo systemctl enable chronyd

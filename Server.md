@@ -27,6 +27,10 @@ SELINUX=permissive
 [webserver@projet ~]$ sudo firewall-cmd --remove-service=ssh
 success
 
+[webserver@projet ~]$ sudo firewall-cmd --remove-service=ssh --permanent
+success
+
+
 [webserver@projet ~]$ sudo firewall-cmd --add-port=27497/tcp
 success
 
