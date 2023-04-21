@@ -6,7 +6,7 @@
 
 ```
 
-## Disable IPv6
+## Disable IPv6(si non utilisé)
 
 ```
 [webserver@projet ~]$ cat /etc/sysctl.d/70-ipv6.conf
@@ -97,3 +97,38 @@ Status for the jail: sshd
    `- Banned IP list:   77.196.149.138
 ```
 
+## Changer le port SSH
+
+Modifier la ligne #Port22
+
+en Port 27497 (Il faut mettre un port à partir de 1024)
+(permet d'éviter les attques de masse si il ne se trouve pas sur le port par défaut )
+
+## Minimiser les packets pour minimiser les vulnérabilités
+
+pour voir les services qui tournent sur runlevel3 et si ils sont nécessaires ou non
+
+```
+$ /sbin/chkconfig --list |grep '3:on'
+```
+si on veut enlever les services
+```
+$ chkconfig serviceName off
+```
+si on veut supprimer les packets
+```
+$ yum -y remove package-name
+```
+
+## SELinux
+
+verifier que SElinux est bien en permissive
+
+#pour avoir l'état du SELinux
+```
+sestatus 
+```
+#Activer le SELinux en permissiv
+```
+setenforce permissive 
+```
