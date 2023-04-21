@@ -132,3 +132,9 @@ sestatus
 ```
 setenforce permissive 
 ```
+
+## Empecher cron
+
+```
+
+```
