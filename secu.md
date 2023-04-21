@@ -260,3 +260,71 @@ Notez que si le fichier /etc/cron.allow existe, seuls les utilisateurs répertor
 
 (Cron est un programme pour exécuter automatiquement des scripts, des commandes ou des logiciels à une date et une heure spécifiée précise, ou selon un cycle défini à l'avance. Chaque utilisateur a un fichier crontab, lui permettant d'indiquer les actions à exécuter)
 
+## Monitor Linux Users Activity with psacct Tool
+```
+$ yum install psacct
+```
+```
+$ sudo systemctl start psacct
+```
+```
+$ sudo systemctl enable psacct
+```
+```
+$ sudo systemctl status psacct
+```
+- ac command without specifying any argument will display total statistics of connect time in hours based on the user logins/logouts from the current wtmp file.
+```
+[Roockbye@projet ~]$ ac
+        total       45.76
+```
+- Using the command “ac -d” will print out the total login time in hours by day-wise.
+```
+[Roockbye@projet ~]$ ac -d
+Mar 23  total       12.88
+Apr 15  total        0.97
+Apr 19  total        0.05
+Apr 20  total       18.29
+Today   total       13.60
+```
+- Using the command “ac -p” will print the total login time of each Linux user in hours.
+```
+[Roockbye@projet ~]$ ac -p
+        Logards                             10.62
+        webserver                           27.30
+        Roockbye                             7.90
+        total       45.82
+```
+- To get the total login statistics time of user “tecmint” in hours, use the command as.
+```
+[Roockbye@projet ~]$ ac tecmint
+        total        0.00
+```
+- The following command will print the day-wise total login time of user “tecmint” in hours.
+```
+# ac -d tecmint
+```
+- The “sa” command is used to print the summary of commands that were executed by users.
+```
+# sa
+```
+- To get the information of an individual user, use the options -u.
+```
+# sa -u
+```
+- This command prints the total number of processes and CPU minutes. If you see a continued increase in these numbers, then it’s time to look into the system about what is happening.
+```
+# sa -m
+```
+- The command “sa -c” displays the highest percentage of users.
+```
+# sa -c
+```
+- The ‘latcomm‘ command is used to search and display previously executed user command information. You can also search commands of individual usernames. For example, we see commands of the user (tecmint).
+```
+# lastcomm tecmint
+```
+- With the help of the lastcomm command, you will be able to view the individual use of each command.
+```
+# lastcomm ls
+```
