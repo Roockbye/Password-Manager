@@ -4,3 +4,6 @@ file.md
 50x.html
 nginx.conf
 test.html
+/etc/nginx/conf.d/forum.conf
+forum.html
+
