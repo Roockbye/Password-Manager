@@ -24,21 +24,32 @@ SELINUX=permissive
 ### Firewall configuration
 
 ```
-[webserver@projet ~]$ sudo firewall-cmd --remove-service=ssh
-success
+$ sudo firewall-cmd --add-port=80/tcp --permanent
+$ sudo firewall-cmd --add-port=443/tcp --permanent
+$ sudo firewall-cmd --add-port=27497/tcp --permanent
 
-[webserver@projet ~]$ sudo firewall-cmd --remove-service=ssh --permanent
-success
+$ sudo firewall-cmd --add-icmp-block=echo-request --permanent
 
+$ sudo firewall-cmd --reload
 
-[webserver@projet ~]$ sudo firewall-cmd --add-port=27497/tcp
-success
+```
 
-[webserver@projet ~]$ sudo firewall-cmd --list-all | grep 27497
-  ports: 27497/tcp
-
-[webserver@projet ~]$ sudo firewall-cmd --reload
-success
+```
+$ sudo firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp1s0
+  sources: 
+  services: cockpit dhcpv6-client mdns
+  ports: 443/tcp 80/tcp 27497/tcp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: echo-request
+  rich rules:
 
 ```
 
