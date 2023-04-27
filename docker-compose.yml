@@ -30,8 +30,8 @@ services:
 
     command: ["/usr/bin/wait-for.sh", "-t", "0", "db:3306", "--", "/docker-entrypoint.sh"]
     ports:
-      - 10207:80
-      - 16908:443
+      - 127.0.0.1:10207:80
+      - 127.0.0.1:16908:443
     #Alternatively for non-root images:
     # - 80:8080
     # - 443:4433
@@ -45,8 +45,8 @@ services:
       - PGID=1000
       - TZ=Europe/London
     ports:
-      - 59999:80
-      - 20934:443
+      - 127.0.0.1:59999:80
+      - 127.0.0.1:20934:443
     restart: unless-stopped
 volumes:
   database_volume:
