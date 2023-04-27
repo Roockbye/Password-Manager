@@ -12,9 +12,7 @@ services:
       - ./database_volume/:/var/lib/mysql
 
   passbolt:
-    image: passbolt/passbolt:latest-ce
-    #Alternatively you can use rootless:
-    #image: passbolt/passbolt:latest-ce-non-root
+    image: passbolt/passbolt:3.12.2-1-ce
     restart: unless-stopped
     depends_on:
       - db
@@ -32,24 +30,5 @@ services:
     ports:
       - 127.0.0.1:10207:80
       - 127.0.0.1:16908:443
-    #Alternatively for non-root images:
-    # - 80:8080
-    # - 443:4433
-  heimdall:
-    image: linuxserver/heimdall
-    container_name: heimdall
-    volumes:
-      - /home/user/appdata/heimdall:/config
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-    ports:
-      - 127.0.0.1:59999:80
-      - 127.0.0.1:20934:443
-    restart: unless-stopped
-volumes:
-  database_volume:
-  gpg_volume:
-  jwt_volume:
+
 
