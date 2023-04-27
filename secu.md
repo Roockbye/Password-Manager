@@ -285,29 +285,29 @@ $ ac tecmint
 ```
 - The following command will print the day-wise total login time of user “tecmint” in hours.
 ```
-# ac -d tecmint
+$ ac -d tecmint
 ```
 - The “sa” command is used to print the summary of commands that were executed by users.
 ```
-# sa
+$ sa
 ```
 - To get the information of an individual user, use the options -u.
 ```
-# sa -u
+$ sa -u
 ```
 - This command prints the total number of processes and CPU minutes. If you see a continued increase in these numbers, then it’s time to look into the system about what is happening.
 ```
-# sa -m
+$ sa -m
 ```
 - The command “sa -c” displays the highest percentage of users.
 ```
-# sa -c
+$ sa -c
 ```
 - The ‘latcomm‘ command is used to search and display previously executed user command information. You can also search commands of individual usernames. For example, we see commands of the user (tecmint).
 ```
-# lastcomm tecmint
+$ lastcomm tecmint
 ```
 - With the help of the lastcomm command, you will be able to view the individual use of each command.
 ```
-# lastcomm ls
+$ lastcomm ls
 ```
