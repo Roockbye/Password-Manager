@@ -9,7 +9,7 @@ services:
       MYSQL_USER: "passbolt"
       MYSQL_PASSWORD: "P4ssb0lt"
     volumes:
-      - ./database_volume/:/var/lib/mysql
+      - ./passbolt_database/:/var/lib/mysql
 
   passbolt:
     image: passbolt/passbolt:3.12.2-1-ce
