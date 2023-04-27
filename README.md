@@ -1,5 +1,5 @@
 # Password-Manager:
 
-collaborator MARMANDE Mélanie, RICCI Bastien, BARBOTEAU Mathieu
+collaborators MARMANDE Mélanie, RICCI Bastien, BARBOTEAU Mathieu
 
 ## 
