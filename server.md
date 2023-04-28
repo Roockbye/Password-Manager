@@ -1,6 +1,6 @@
 # Server 
 
-## Requierments
+## Requirements
 
 ### Base
 
