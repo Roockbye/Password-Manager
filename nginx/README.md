@@ -1,5 +1,19 @@
 # NGINX
 
+## Simplified setup 
+
+```bash
+$ sudo simplified_setup.sh
+```
+
+> [simplified_setup.sh](/nginx/simplified_setup.sh)
+
+> We use [cerbot](/nginx/certbot.md)
+
+```bash
+$ sudo systemctl restart nginx
+```
+
 ## Setup
 
 ```bash
@@ -94,7 +108,7 @@ $ sudo vim /usr/share/nginx/html/50x.html
 
 ## Certificates
 
-> We used [cerbot](/nginx/certbot.md)
+> We use [cerbot](/nginx/certbot.md)
 
 ## Restart nginx
 
