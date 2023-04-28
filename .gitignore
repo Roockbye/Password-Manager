@@ -4,7 +4,7 @@ nginx/etc/nginx/conf.d/forum.conf
 nginx/etc/nginx/conf.d/send.conf
 nginx/etc/nginx/conf.d/nextcloud.conf
 
-/usr/share/nginx/html/forum.html
+nginx/usr/share/nginx/html/forum.html
 
 TODO.md
 
