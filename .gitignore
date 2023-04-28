@@ -1,8 +1,8 @@
 pics/
 
-/etc/nginx/conf.d/forum.conf
-/etc/nginx/conf.d/send.conf
-/etc/nginx/conf.d/nextcloud.conf
+nginx/etc/nginx/conf.d/forum.conf
+nginx/etc/nginx/conf.d/send.conf
+nginx/etc/nginx/conf.d/nextcloud.conf
 
 /usr/share/nginx/html/forum.html
 
