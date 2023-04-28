@@ -1,5 +1,4 @@
-curl -L -O https://github.com/Melanieynov/Password-Manager/archive/refs/heads/main.zip
-unzip main.zip
+curl -L -O https://github.com/Melanieynov/Password-Manager/archive/refs/heads/main.zip && unzip main.zip
 
 mv Password-Manager-main/nginx/etc/nginx/conf.d/ /etc/nginx/conf.d/
 mv Password-Manager-main/nginx/etc/nginx/sites-enabled/ /etc/nginx/sites-enabled/
