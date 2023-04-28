@@ -1,5 +1,5 @@
 
-version: '3'
+version: '3.9'
 services:
   db:
     image: mariadb:10.10
@@ -10,10 +10,10 @@ services:
       MYSQL_USER: "passbolt"
       MYSQL_PASSWORD: "P4ssb0lt"
     volumes:
-      - ./passbolt_database/:/var/lib/mysql
+      - database_volume:/var/lib/mysql
 
   passbolt:
-    image: passbolt/passbolt:3.12.2-1-ce
+    image: passbolt/passbolt:3.12.0-3-ce
     restart: unless-stopped
     depends_on:
       - db
@@ -26,8 +26,13 @@ services:
     volumes:
       - gpg_volume:/etc/passbolt/gpg
       - jwt_volume:/etc/passbolt/jwt
-
     command: ["/usr/bin/wait-for.sh", "-t", "0", "db:3306", "--", "/docker-entrypoint.sh"]
     ports:
       - 127.0.0.1:10207:80
       - 127.0.0.1:16908:443
+
+volumes:
+  database_volume:
+  gpg_volume:
+  jwt_volume:
+  

@@ -14,7 +14,3 @@ services:
       - 127.0.0.1:59999:80
       - 127.0.0.1:20934:443
     restart: unless-stopped
-volumes:
-  - database_volume:./heimdall_database/:/var/lib/mysql
-  - gpg_volume:/etc/heimdall/gpg
-  - jwt_volume:/etc/heimdall/jwt
