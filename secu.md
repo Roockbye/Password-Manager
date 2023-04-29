@@ -1,3 +1,8 @@
+# Securisation
+## Separate services from the system
+
+For services accessible from the net, the best practice is to separate them from the system (avoid FTP, Web, SQL on the same system)
+It is possible to isolate the services of the main system with docker container.(see conf heimdall and passbolt)
 
 ## Time Synchronization (already installed)
 
@@ -6,7 +11,7 @@ $ sudo systemctl start chronyd && sudo systemctl enable chronyd
 
 ```
 
-## Disable IPv6(si non utilisé)
+## Disable IPv6(if not used)
 
 ```
 $ cat /etc/sysctl.d/70-ipv6.conf
@@ -28,7 +33,7 @@ Disk /dev/mapper/rl_localhost--live-swap: 7.79 GiB, 8367636480 bytes, 16343040 s
 
 ## Fail2ban:
 
-vérification du firewall en premier:
+firewall check first:
 
 ```
 $ sudo systemctl enable firewalld --now
@@ -37,7 +42,7 @@ $ sudo systemctl enable firewalld --now
 $ sudo systemctl status firewalld
 ```
 
-install de epel pour le fail2ban
+install of epel for the fail2ban
 
 ```
 $ sudo dnf install epel-release
@@ -55,7 +60,7 @@ $ sudo systemctl enable fail2ban --now
 $ sudo systemctl status fail2ban
 ```
 
-configurer fail2ban
+configure fail2ban
 
 ```
 $ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
@@ -63,7 +68,7 @@ $ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
 $ sudo vim /etc/fail2ban/jail.local
 ```
-Sous la section [DEFAULT]
+Under the section [DEFAULT]
 
 ```
 bantime = 24h
@@ -75,7 +80,7 @@ maxretry = 3
 $ sudo systemctl restart fail2ban
 ```
 
-pour voir le nombre d'ips ban:
+to see the number of ban IPs:
 
 ```
 $ sudo fail2ban-client status sshd
@@ -91,44 +96,41 @@ Status for the jail: sshd
    `- Banned IP list:   77.196.149.138
 ```
 
-Pour enlever une IP ban
+To remove a ban IP:
 
 ```
 $ sudo fail2ban-client unban IP
 ```
 
-## Changer le port SSH
+## Change the SSH port
 
-Modifier la ligne #Port22
+Edit line #Port22
 
-en Port 27497 (Il faut mettre un port à partir de 1024)
-(permet d'éviter les attques de masse si il ne se trouve pas sur le port par défaut )
+into Port 27497 (Helps avoid mass attacks if it is not on the default port)
+## Minimize packets to minimize vulnerabilities 
 
-## Minimiser les packets pour minimiser les vulnérabilités
-
-pour voir les services qui tournent sur runlevel3 et si ils sont nécessaires ou non
+to see what services are running on runlevel3 and whether they are needed or not
 
 ```
 $ /sbin/chkconfig --list |grep '3:on'
 ```
-si on veut enlever les services
+if we want to remove the services
 ```
 $ chkconfig serviceName off
 ```
-si on veut supprimer les packets
+if we want to delete the packets
 ```
 $ yum -y remove package-name
 ```
 
+## Disable Ctrl+Alt+Del key combination
 
-## Désactiver la combinaison de touches Ctrl+Alt+Suppr
-
-Cette combinaison va faire redémarrer le serveur
+This combination will restart the server
 
 ```
 $ sudo vi /etc/systemd/logind.conf
 ```
-trouver la ligne #HandleLidSwitch et ajouter:
+find the line #HandleLidSwitch and add:
 ```
 #HandleLidSwitch=ignore
 HandlePowerKey=ignore
@@ -137,7 +139,7 @@ HandlePowerKey=ignore
 $ sudo systemctl restart systemd-logind.service
 ```
 
-## Empêcher aux utilisateurs d'utiliser d'anciens mots de passe
+## Prevent users from using old passwords
 
 - Limit using a password that was used in past.
 Users can not set the same password within the generation.
@@ -220,28 +222,27 @@ ocredit = -1
 (NIST guidelines)
 The United States Department of Commerce's National Institute of Standards and Technology (NIST) has put out two standards for password policies which have been widely followed.
 
-## Journaux d'Audit
+## Audit Logs
 
-Commande pour visualiser les événements d'audit:
+Command to view audit events: 
 
-```
-sudo ausearch -m USER_LOGIN
-```
-Cette commande affiche les événements de connexion des utilisateurs. Vous pouvez remplacer USER_LOGIN par d'autres types d'événements d'audit (par exemple, USER_LOGOUT, USER_START, USER_END, etc.)
+``` 
+sudo ausearch -m USER_LOGIN 
+``` 
 
-## Interdire aux utilisateurs d'utiliser cron
+This command displays user login events. You can replace USER_LOGIN with other types of audit events (for example, USER_LOGOUT, USER_START, USER_END, and so on).
 
-```
-sudo vi /etc/cron.deny
-```
+## Prohibit users from using cron
 
-Ajoutez les noms des utilisateurs que vous souhaitez interdire d'utiliser cron, un nom d'utilisateur par ligne
+``` 
+sudo vi /etc/cron.deny 
+``` 
 
-Assurez-vous que le fichier /etc/cron.allow n'existe pas ou qu'il est vide.
+Add the names of the users you want to prohibit from using cron, one username per line Make sure that the /etc/cron.allow file does not exist or is empty. 
 
-Notez que si le fichier /etc/cron.allow existe, seuls les utilisateurs répertoriés dans ce fichier seront autorisés à utiliser cron. Si vous ne souhaitez pas utiliser cette fonctionnalité, vous pouvez simplement supprimer ou vider le fichier
+Note that if the /etc/cron.allow file exists, only the users listed in this file will be allowed to use cron. If you don't want to use this feature, you can simply delete or empty the file 
 
-(Cron est un programme pour exécuter automatiquement des scripts, des commandes ou des logiciels à une date et une heure spécifiée précise, ou selon un cycle défini à l'avance. Chaque utilisateur a un fichier crontab, lui permettant d'indiquer les actions à exécuter)
+(Cron is a program for automatically executing scripts, commands, or software at a specific date and time, or according to a predefined cycle. Each user has a crontab file, allowing him to specify the actions to be performed)
 
 ## Monitor Linux Users Activity with psacct Tool
 ```
@@ -310,4 +311,56 @@ $ lastcomm tecmint
 - With the help of the lastcomm command, you will be able to view the individual use of each command.
 ```
 $ lastcomm ls
+```
+
+## Keep /boot as read-only
+
+Linux kernel and its related files are in /boot directory which is by default as read-write. Changing it to read-only reduces the risk of unauthorized modification of critical boot files. To do this, open “/etc/fstab” file.
+```
+$ vi /etc/fstab
+```
+
+Add the following line at the bottom, save and close it.
+```
+LABEL=/boot     /boot     ext2     defaults,ro     1 2
+```
+Please note that you need to reset the change to read-write if you need to upgrade the kernel in future.
+
+## Secure the kernel from network attacks
+
+Strengthening the TCP stack of the kernel prevents certain types of attacks such as limiting the configuration transmitted by the network for IPv4/IPv6, enabling execshield protection, enabling source IP address verification, preventing an IP spoofing attack... 
+
+This is configured via sysctl etc ```/etc/sysctl.conf```
+
+
+Reboot the machine soon after a kernel panic
+```
+kernel.panic=10
+```
+Addresses of mmap base, heap, stack and VDSO page are randomized
+```
+kernel.randomize_va_space=2
+```
+Ignore bad ICMP errors
+```
+net.ipv4.icmp_ignore_bogus_error_responses=1
+```
+Protects against creating or following links under certain conditions
+```
+fs.protected_hardlinks=1
+fs.protected_symlinks=1
+```
+to ignore ping or broadcast request
+
+Ignore ICMP request
+```
+net.ipv4.icmp_echo_ignore_all = 1
+```
+Ignore Broadcast request
+```
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+```
+Load new settings or changes, by running following command
+```
+[Roockbye@projet ~]$ sudo sysctl -p
 ```
