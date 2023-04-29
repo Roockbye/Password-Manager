@@ -1,6 +1,22 @@
 # NGINX
 
-## Simplified setup 
+
+## Setup
+
+```bash
+$ sudo dnf install nginx -y
+
+$ sudo systemctl enable nginx --now
+```
+
+
+## Save your conf or (default conf)
+
+```bash
+$ sudo tar -czvf /srv/nginx.old_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
+```
+
+## Simplified configuration 
 
 ```bash
 $ sudo simplified_setup.sh
@@ -14,13 +30,6 @@ $ sudo simplified_setup.sh
 $ sudo systemctl restart nginx
 ```
 
-## Setup
-
-```bash
-$ sudo dnf install nginx -y
-
-$ sudo systemctl enable nginx --now
-```
 
 ## Configuration
 
@@ -114,4 +123,10 @@ $ sudo vim /usr/share/nginx/html/50x.html
 
 ```bash
 $ sudo systemctl restart nginx
+```
+
+## Save your new configuration
+
+```bash
+$ sudo tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
 ```

@@ -1,3 +1,5 @@
+tar -czvf /srv/nginx.old_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
+
 curl -L -O https://github.com/Melanieynov/Password-Manager/archive/refs/heads/main.zip && unzip main.zip
 
 mv Password-Manager-main/nginx/etc/nginx/conf.d/ /etc/nginx/conf.d/
@@ -16,3 +18,5 @@ find /usr/share/nginx/ -type d  -exec chmod 500 {} \;
 
 rm -rf main.zip
 rm -rf Password-Manager-main
+
+tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/

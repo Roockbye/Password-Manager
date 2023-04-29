@@ -1,25 +1,5 @@
 # Server 
 
-## Requirements
-
-### Base
-
-> Rocky install (check pics ?)
-
-```
-$ sudo dnf upgrade --refresh -y && sudo dnf install -y vim
-
-$ sudo setenforce 0
-
-$ sudo vim /etc/selinux/config
-
-```
-
-```
-$ cat /etc/selinux/config | grep SELINUX=permissive
-SELINUX=permissive
-
-```
 
 ### Firewall configuration
 
@@ -63,27 +43,24 @@ public (active)
 
 ### SSH configuration
 
-```
-$ sudo cat /etc/ssh/sshd_config | grep sshd_config.d
+Create un new configuration file for sshd :
 
-#  /etc/ssh/sshd_config.d/  which will be automatically included below
-Include /etc/ssh/sshd_config.d/*.conf
-
+```bash
+$ sudo vim /etc/ssh/sshd_config.d/ssh_only.conf
 ```
 
-```
-$ sudo cat /etc/ssh/sshd_config.d/ssh_only.conf
- 
+```bash
 PasswordAuthentication no
 Port 27497
 AuthorizedKeysFile     .ssh/authorized_keys
-
 ```
 
-```
+... and enable sshd :
+
+```bash
 $ sudo systemctl enable sshd --now
-
 ```
+
 
 #### For each collaborator ; permissions are prohibitives
 
