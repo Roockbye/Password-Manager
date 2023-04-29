@@ -7,6 +7,9 @@ There is our solution to kept your passwords secure !
 You need rocky linux :
 > [Rocky official image](https://rockylinux.org/download/)
 
+- Public IP
+- Domain name (everything is set for projet.engineer)
+
 
 ### Base configuration
 
@@ -31,25 +34,6 @@ $ sudo vim /etc/selinux/config
 SELINUX=permissive
 ```
 
-### SSH configuration
-
-Create un new configuration file for sshd :
-
-```bash
-$ sudo vim /etc/ssh/sshd_config.d/ssh_only.conf
-```
-
-```bash
-PasswordAuthentication no
-Port 27497
-AuthorizedKeysFile     .ssh/authorized_keys
-```
-
-... and enable sshd :
-
-```bash
-$ sudo systemctl enable sshd --now
-```
 
 > Collaborators MARMANDE Mélanie, RICCI Bastien, BARBOTEAU Mathieu
 
