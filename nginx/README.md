@@ -119,6 +119,24 @@ $ sudo vim /usr/share/nginx/html/50x.html
 
 > We use [cerbot](/nginx/certbot.md)
 
+## Firewall configuration
+
+```bash
+$ sudo firewall-cmd --add-port=80/tcp --permanent
+$ sudo firewall-cmd --add-port=443/tcp --permanent
+
+$ sudo firewall-cmd --add-icmp-block=redirect --permanent
+
+$ sudo firewall-cmd --add-rich-rule='rule family=ipv4 protocol value="icmp" limit value="10/s" accept' --permanent
+
+$ sudo firewall-cmd --remove-service=cockpit --permanent
+$ sudo firewall-cmd --remove-service=dhcpv6-client --permanent
+$ sudo firewall-cmd --remove-service=mdns --permanent
+
+$ sudo firewall-cmd --reload
+$ sudo firewall-cmd --list-all
+```
+
 ## Restart nginx
 
 ```bash

@@ -20,3 +20,17 @@ rm -rf main.zip
 rm -rf Password-Manager-main
 
 tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
+
+
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+
+firewall-cmd --add-icmp-block=redirect --permanent
+
+firewall-cmd --add-rich-rule='rule family=ipv4 protocol value="icmp" limit value="10/s" accept' --permanent
+
+firewall-cmd --remove-service=cockpit --permanent
+firewall-cmd --remove-service=dhcpv6-client --permanent
+firewall-cmd --remove-service=mdns --permanent
+
+firewall-cmd --reload && firewall-cmd --list-all
