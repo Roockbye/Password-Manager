@@ -2,4 +2,4 @@
 
 ## Ssh configuration
 
-- [ssh](/security/.md_linked/ssh.md)
+- [ssh](/security/markdown/ssh.md)
