@@ -7,7 +7,7 @@ Put your ssh public key
 $ vim /home/username/.ssh/authorized_keys
 ```
 
-Create un new configuration file for sshd
+Create a new configuration file for sshd
 
 ```bash
 $ sudo vim /etc/ssh/sshd_config.d/ssh_only.conf

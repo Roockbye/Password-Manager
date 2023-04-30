@@ -1,5 +1,7 @@
 pics/
 
+docker_helper.md
+
 nginx/etc/nginx/sites-enabled/forum.conf
 nginx/etc/nginx/sites-enabled/send.conf
 nginx/etc/nginx/sites-enabled/nextcloud.conf
