@@ -77,13 +77,13 @@ maxretry = 3
 ```
 
 ```
-$ sudo systemctl restart fail2ban
+[Roockbye@projet ~]$ sudo systemctl restart fail2ban
 ```
 
 to see the number of ban IPs:
 
 ```
-$ sudo fail2ban-client status sshd
+[Roockbye@projet ~]$ sudo fail2ban-client status sshd
 
 Status for the jail: sshd
 |- Filter
@@ -99,7 +99,70 @@ Status for the jail: sshd
 To remove a ban IP:
 
 ```
-$ sudo fail2ban-client unban IP
+[Roockbye@projet ~]$ sudo fail2ban-client unban IP
+```
+
+Add some conditions for port 80 and 443
+in jail.local:
+```
+[Roockbye@projet ~]$ sudo vim /etc/fail2ban/jail.local
+```
+Add those rules for port 80(http) and 443(https)
+```
+[http-get-dos]
+enabled = true
+port = http,https
+filter = http-get-dos
+logpath = /var/log/httpd/access_log
+maxretry = 10
+findtime = 1s
+bantime = 24h
+
+[http-post-dos]
+enabled = true
+port = http,https
+filter = http-post-dos
+logpath = /var/log/httpd/access_log
+maxretry = 10
+findtime = 1s
+bantime = 24h
+```
+
+And create the files:
+```
+[Roockbye@projet ~]$ sudo vi /etc/fail2ban/filter.d/http-get-dos.conf
+```
+Add those lines:
+```
+[Definition]
+failregex = ^<HOST> -.*"(GET|POST).*HTTP.*"$
+```
+And
+```
+[Roockbye@projet ~]$ sudo vi /etc/fail2ban/filter.d/http-post-dos.conf
+```
+Add those lines:
+```
+[Definition]
+failregex = ^<HOST> -.*"POST.*HTTP.*"$
+```
+And of course we have to restart the service
+```
+[Roockbye@projet ~]$ sudo systemctl restart fail2ban
+```
+And to see the logs of fail2ban:
+```
+[Roockbye@projet ~]$ sudo tail -f /var/log/fail2ban.log
+2023-04-30 09:51:34,107 fail2ban.jail           [30155]: INFO    Initiated 'polling' backend
+2023-04-30 09:51:34,108 fail2ban.filter         [30155]: INFO      maxRetry: 10
+2023-04-30 09:51:34,108 fail2ban.filter         [30155]: INFO      findtime: 1
+2023-04-30 09:51:34,108 fail2ban.actions        [30155]: INFO      banTime: 86400
+2023-04-30 09:51:34,108 fail2ban.filter         [30155]: INFO      encoding: UTF-8
+2023-04-30 09:51:34,108 fail2ban.filter         [30155]: INFO    Added logfile: '/var/log/httpd/access_log' (pos = 0, hash = )
+2023-04-30 09:51:34,110 fail2ban.jail           [30155]: INFO    Jail 'sshd' started
+2023-04-30 09:51:34,111 fail2ban.filtersystemd  [30155]: INFO    [sshd] Jail is in operation now (process new journal entries)
+2023-04-30 09:51:34,111 fail2ban.jail           [30155]: INFO    Jail 'http-get-dos' started
+2023-04-30 09:51:34,112 fail2ban.jail           [30155]: INFO    Jail 'http-post-dos' started
 ```
 
 ## Change the SSH port
