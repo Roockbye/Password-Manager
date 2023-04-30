@@ -1,6 +1,5 @@
 # SSH configuration
 
-
 Put your ssh public key
 
 ```bash
@@ -13,11 +12,7 @@ Create a new configuration file for sshd
 $ sudo vim /etc/ssh/sshd_config.d/ssh_only.conf
 ```
 
-```bash
-PasswordAuthentication no
-Port 27497
-AuthorizedKeysFile     .ssh/authorized_keys
-```
+- [ssh_only.conf](/security/ssh/etc/ssh/sshd_config.d/ssh_only.conf)
 
 Open ssh port
 

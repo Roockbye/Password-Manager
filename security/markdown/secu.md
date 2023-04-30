@@ -6,158 +6,67 @@ It is possible to isolate the services of the main system with docker container.
 
 ## Time Synchronization (already installed)
 
-```
+```bash
 $ sudo systemctl start chronyd && sudo systemctl enable chronyd
-
 ```
 
-## Disable IPv6(if not used)
+## Disable IPv6(not used here)
 
-```
+```bash
 $ cat /etc/sysctl.d/70-ipv6.conf
 
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 
 $ ip a | grep inet6
-
 ```
 
 ## Swap (already up)
 
-```
+```bash
 $ sudo fdisk -l | grep swap
 Disk /dev/mapper/rl_localhost--live-swap: 7.79 GiB, 8367636480 bytes, 16343040 sectors
 
 ```
 
 
-## Change the SSH port
-
-Edit line #Port22
-
-into Port 27497 (Helps avoid mass attacks if it is not on the default port)
 ## Minimize packets to minimize vulnerabilities 
 
 to see what services are running on runlevel3 and whether they are needed or not
 
-```
+```bash
 $ /sbin/chkconfig --list |grep '3:on'
 ```
 if we want to remove the services
-```
+```bash
 $ chkconfig serviceName off
 ```
 if we want to delete the packets
-```
-$ yum -y remove package-name
+```bash
+$ sudo dnf -y remove package-name
 ```
 
 ## Disable Ctrl+Alt+Del key combination
 
 This combination will restart the server
 
-```
-$ sudo vi /etc/systemd/logind.conf
-```
-find the line #HandleLidSwitch and add:
-```
+```bash
+$ sudo vi /etc/systemd/logind.conf | grep HandlePowerKey
+
 #HandleLidSwitch=ignore
 HandlePowerKey=ignore
 ```
-```
+```bash
 $ sudo systemctl restart systemd-logind.service
 ```
 
-## Prevent users from using old passwords
-
-- Limit using a password that was used in past.
-Users can not set the same password within the generation.
-```
-$ sudo vi /etc/pam.d/system-auth
-```
-#line 21 : add [remember=*] (example below means 5 gen)
-```
-password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok remember=5
-```
-The system will remember the last 5 password used so the user don't use it again
-
-
-- Set minimum password length.
-Users can not set thier password length less than this parameter
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 11 : uncomment and set minimum length (example below means 8 char)
-minlen = 8
-
-
-- Set minimum number of required classes of characters for the new password.
-(kinds ⇒ UpperCase / LowerCase / Digits / Others)
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 34 : uncomment and set parameter (example below means 2 kinds)
-
-minclass = 2
-
- - Set maximum number of allowed consecutive same characters in the new password.
- ```
-sudo vi /etc/security/pwquality.conf
-```
-#line 38 : uncomment and set parameter (example below means 2 char)
-
-maxrepeat = 2
-
-- Set maximum number of allowed consecutive characters of the same class in the new password.
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 43 : uncomment and set parameter (example below means 4 kinds)
-
-maxclassrepeat = 4
-
-- Require at least one lowercase character in the new password.
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 25 : uncomment and set parameter (example below means 1 char)
-
-lcredit = -1
-
-- Require at least one uppercase character in the new password.
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 20 : uncomment and set parameter (example below means 1 char)
-
-ucredit = -1
-
-- Require at least one digit in the new password.
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 15 : uncomment and set parameter (example below means 1 char)
-
-dcredit = -1
-
--  	Require at least one other character in the new password.
-```
-sudo vi /etc/security/pwquality.conf
-```
-#line 30 : uncomment and set parameter (example below means 1 char)
-
-ocredit = -1
-
-(NIST guidelines)
-The United States Department of Commerce's National Institute of Standards and Technology (NIST) has put out two standards for password policies which have been widely followed.
 
 ## Audit Logs
 
 Command to view audit events: 
 
-``` 
-sudo ausearch -m USER_LOGIN 
+``` bash
+$ sudo ausearch -m USER_LOGIN 
 ``` 
 
 This command displays user login events. You can replace USER_LOGIN with other types of audit events (for example, USER_LOGOUT, USER_START, USER_END, and so on).

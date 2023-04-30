@@ -6,4 +6,4 @@
 
 ## Fail2ban configuration
 
-- [Fail2ban](/security/fail2ban/ssh.md)
+- [Fail2ban](/security/fail2ban/fail2ban.md)
