@@ -15,10 +15,6 @@ $ sudo systemctl enable fail2ban --now
 ## Configuration
 
 ```bash
-$ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-```
-
-```bash
 $ sudo vim /etc/fail2ban/jail.local
 ```
 
