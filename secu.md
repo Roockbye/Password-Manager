@@ -164,6 +164,12 @@ And to see the logs of fail2ban:
 2023-04-30 09:51:34,111 fail2ban.jail           [30155]: INFO    Jail 'http-get-dos' started
 2023-04-30 09:51:34,112 fail2ban.jail           [30155]: INFO    Jail 'http-post-dos' started
 ```
+```
+[Roockbye@projet ~]$ sudo fail2ban-client status
+Status
+|- Number of jail:      3
+`- Jail list:   http-get-dos, http-post-dos, sshd
+```
 
 ## Change the SSH port
 
