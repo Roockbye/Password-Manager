@@ -55,7 +55,7 @@ Unban :
 $ sudo fail2ban-client unban IP
 ```
 
-Add some conditions for port 80 and 443 :
+Add some conditions for ports 80 and 443 :
 
 - In jail.local:
 
@@ -63,7 +63,7 @@ Add some conditions for port 80 and 443 :
 $ sudo vim /etc/fail2ban/jail.local
 ```
 
-Add those rules for port 80(http) and 443(https)
+Add those rules for ports 80(http) and 443(https)
 
 ```bash
 [http-get-dos]
