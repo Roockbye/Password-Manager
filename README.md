@@ -1,7 +1,8 @@
 # Password-Manager
 
-> Collaborators MARMANDE Mélanie, RICCI Bastien, BARBOTEAU Mathieu
 There is our solution to kept your passwords secure !
+
+> Collaborators MARMANDE Mélanie, RICCI Bastien, BARBOTEAU Mathieu
 
 ## Requirements
 

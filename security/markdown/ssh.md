@@ -7,7 +7,7 @@ Put your ssh public key
 $ vim /home/username/.ssh/authorized_keys
 ```
 
-Create un new configuration file for sshd
+Create a new configuration file for sshd
 
 ```bash
 $ sudo vim /etc/ssh/sshd_config.d/ssh_only.conf
@@ -32,3 +32,5 @@ $ sudo firewall-cmd --reload
 ```bash
 $ sudo systemctl enable sshd --now
 ```
+
+- [Expensive documentation](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server-fr)
