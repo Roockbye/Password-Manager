@@ -190,16 +190,3 @@ fs.protected_hardlinks=1
 fs.protected_symlinks=1
 ```
 to ignore ping or broadcast request
-
-Ignore ICMP request
-```
-net.ipv4.icmp_echo_ignore_all = 1
-```
-Ignore Broadcast request
-```
-net.ipv4.icmp_echo_ignore_broadcasts = 1
-```
-Load new settings or changes, by running following command
-```
-[Roockbye@projet ~]$ sudo sysctl -p
-```
