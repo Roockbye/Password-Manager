@@ -148,3 +148,9 @@ $ sudo systemctl restart nginx
 ```bash
 $ sudo tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
 ```
+
+## Configuration generator
+
+- You can also use NGINXConfig to help you :
+
+> [NGINXConfig](https://www.digitalocean.com/community/tools/nginx?global.app.lang=fr)
