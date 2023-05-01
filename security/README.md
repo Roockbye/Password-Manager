@@ -76,4 +76,6 @@ Add the names of the users you want to authorize from using cron.
 
 ## System-auth configuration
 
-# TODO
+> Edit password gestion
+
+- [password configuration](/security/markdown/passwd.md)

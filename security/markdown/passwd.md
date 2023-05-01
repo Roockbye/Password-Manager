@@ -44,4 +44,4 @@ The system will remember the last 5 password used so the user don't use it again
 ```bash
 $ sudo vim /etc/security/pwquality.conf
 ```
-[security/pwquality.conf](/security/native_conf/etc/security/pwquality.conf)
+[pwquality.conf](/security/native_conf/etc/security/pwquality.conf)
