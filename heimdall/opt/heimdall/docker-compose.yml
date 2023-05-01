@@ -5,7 +5,7 @@ services:
     image: linuxserver/heimdall:2.5.6
     container_name: heimdall
     volumes:
-      - /home/user/appdata/heimdall:/config
+      - /path/to/appdata/config:/config
     environment:
       - PUID=1000
       - PGID=1000
