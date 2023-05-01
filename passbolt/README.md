@@ -24,10 +24,10 @@ $ cd /opt/passbolt
 $ docker compose up -d
 ```
 
-## Set a new user
+## Set an admin 
 
 ```bash
-$ docker compose -f docker-compose.yml exec passbolt su -m -c "/usr/share/php/passbolt/bin/cake \
+$ docker exec <id of passbolt > su -m -c "/usr/share/php/passbolt/bin/cake \
                                 passbolt register_user \
                                 -u [EMAIL] \
                                 -f [NAME] \
