@@ -2,15 +2,15 @@
 
 ## Audit Logs
 
-Command to view audit events: 
+Command to view audit events:
 
 ``` bash
 $ sudo ausearch -m USER_LOGIN 
-``` 
+```
 
 This command displays user login events. You can replace USER_LOGIN with other types of audit events (for example, USER_LOGOUT, USER_START, USER_END, and so on).
 
-## Minimize packets to minimize vulnerabilities 
+## Minimize packets to minimize vulnerabilities
 
 - To see what services are running on runlevel3 and whether they are needed or not :
 

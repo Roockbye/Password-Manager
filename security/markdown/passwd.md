@@ -6,9 +6,9 @@ It also takes into account not to use an old password because it represents a se
 
 -For that we need to go to ```system-auth```
 
-The implementation of a new authentication method should not require changes in the configuration or source code of a program or service. This is why applications rely on PAM, which provides them with the primitives* necessary to authenticate their users.
+The implementation of a new authentication method should not require changes in the configuration or source code of a program or service. This is why applications rely on PAM, which provides them with the primitives necessary to authenticate their users.
 
-auth - Authentication
+auth = Authentication
 
 This handles the authentication of the requester and establishes the rights of the account:
 

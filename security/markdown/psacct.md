@@ -1,6 +1,4 @@
-
 # Monitor linux users activity with psacct Tool
-
 
 ```bash
 $ sudo dnf install psacct -y

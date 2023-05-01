@@ -9,7 +9,8 @@ $ sudo cat /etc/systemd/logind.conf | grep HandlePowerKey
 
 #HandleLidSwitch=ignore
 HandlePowerKey=ignore
-
+```
+```bash
 $ sudo systemctl restart systemd-logind.service
 ```
 
@@ -52,19 +53,19 @@ LABEL=/boot     /boot     ext2     defaults,ro     1 2
 
 ```bash
 $ sudo vim /etc/cron.allow 
-``` 
+```
 
-Add the names of the users you want to authorize from using cron. 
+Add the names of the users you want to authorize from using cron.
 
 ## Secure the kernel from network attacks
 
->Strengthening the TCP stack of the kernel prevents certain types of attacks such as limiting the configuration transmitted by the network for IPv4/IPv6, enabling execshield protection, enabling source IP address verification, preventing an IP spoofing attack... 
+>Strengthening the TCP stack of the kernel prevents certain types of attacks such as limiting the configuration transmitted by the network for IPv4/IPv6, enabling execshield protection, enabling source IP address verification, preventing an IP spoofing attack...
 
 - This is configured via [/etc/sysctl.conf](/security/native_conf/etc/sysctl.conf)
 
 ## Security checks
 
-> Simply ckecks of things.
+> Simple ckeck of things.
 
 - [checks](/security/markdown/checks.md)
 

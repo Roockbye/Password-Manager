@@ -1,10 +1,10 @@
 # Password-Manager
 
-There is our solution to kept your passwords secure !
+This our solution to keep your passwords safe !
 
 > Collaborators MARMANDE Mélanie, RICCI Bastien, BARBOTEAU Mathieu
 
-## Requirements
+## Requierements
 
 You need rocky linux :
 > [Rocky official image](https://rockylinux.org/download/)
@@ -35,5 +35,3 @@ $ sudo vim /etc/selinux/config
 ```bash
 SELINUX=permissive
 ```
-
-

@@ -1,6 +1,5 @@
 # NGINX
 
-
 ## Setup
 
 ```bash
@@ -30,9 +29,7 @@ $ sudo simplified_setup.sh
 $ sudo systemctl restart nginx
 ```
 
-
 ## Configuration
-
 ### /etc/nginx/
 
 ```bash
@@ -90,7 +87,7 @@ $ sudo vim /etc/nginx/conf.d/proxy_pass.conf
 
 ## Templates
 
-> There are my custom pages ; you can replace them by yours !
+> These are my custom pages ; you can replace them by yours !
 
 ```bash
 $ sudo vim /usr/share/nginx/html/index.html
