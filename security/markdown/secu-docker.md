@@ -1,4 +1,4 @@
-# How to secure your Docker
+# Secure Docker
 
 ## Install Docker Bench Security
 
