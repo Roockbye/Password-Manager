@@ -17,7 +17,7 @@ $ sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 ## Generates certificates
 
 ```bash
-$ cerbot ceronly --standalone -d projet.engineer,dashboard.projet.engineer,passbolt.projet.engineer,working.projet.engineer
+$ sudo certbot certonly --standalone -d projet.engineer,dashboard.projet.engineer,passbolt.projet.engineer,working.projet.engineer,logs.projet.engineer
 ```
 
 > [Official documentation](https://certbot.eff.org/)
