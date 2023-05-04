@@ -1,5 +1,24 @@
 # Security elements
 
+## Backup
+
+> Script to have a backup of the server
+
+- [backup](/security/backup/backup.sh)
+
+After writing the script of the backup, open crontab to schedule the automatic backup
+
+```bash
+crontab -e
+```
+
+Then we write this line so we have a backup every day at midnight
+
+```bash
+0 0 * * * /srv/backup.sh
+```
+
+
 ## Disable Ctrl+Alt+Del key combination
 
 > This combination can restart the server
@@ -89,20 +108,3 @@ Add the names of the users you want to authorize from using cron.
 
 - [password configuration](/security/markdown/passwd.md)
 
-## Backup
-
-> Script to have a backup of the server
-
-- [backup](/security/backup/backup.sh)
-
-After writing the script of the backup, open crontab to schedule the automatic backup
-
-```bash
-crontab -e
-```
-
-Then we write this line so we have a backup every day at midnight
-
-```bash
-0 0 * * * /srv/backup.sh
-```
