@@ -23,7 +23,9 @@ $ sudo simplified_setup.sh
 
 > [nginx_simplified_setup.sh](/nginx/nginx_simplified_setup.sh)
 
-> We use [cerbot](/nginx/certbot.md)
+- We use [cerbot](/nginx/certbot.md)
+
+- scroll to "Access at server informations"
 
 ```bash
 $ sudo systemctl restart nginx
