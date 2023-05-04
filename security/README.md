@@ -1,5 +1,24 @@
 # Security elements
 
+## Backup
+
+> Script to have a backup of the server
+
+- [backup](/security/backup/backup.sh)
+
+After writing the script of the backup, open crontab to schedule the automatic backup
+
+```bash
+crontab -e
+```
+
+Then we write this line so we have a backup every day at midnight
+
+```bash
+0 0 * * * /srv/backup.sh
+```
+
+
 ## Disable Ctrl+Alt+Del key combination
 
 > This combination can restart the server
@@ -89,26 +108,6 @@ Add the names of the users you want to authorize from using cron.
 
 - [password configuration](/security/markdown/passwd.md)
 
-## Backup
-
-> Script to have a backup of the server
-
-- [backup](/security/backup/backup.sh)
-
-After writing the script of the backup, open crontab to schedule the automatic backup
-
-```bash
-crontab -e
-```
-What is crontab:
-
-Crontab is a system command on Linux and Unix that allows users and administrators to schedule automatic tasks to run at specific times, regular or not. Crontab is an abbreviation of "cron table" and refers to the configuration file that contains the list of scheduled tasks to be executed. Tasks can be shell scripts, system commands, or applications. Crontab is used to automate repetitive tasks such as backups, updates, reports, etc.
-
-- Then we write this line so we have a backup every day at midnight
-
-```bash
-0 0 * * * /srv/backup.sh
-```
 
 How to make a backup manually:
 ```bash
