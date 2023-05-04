@@ -155,7 +155,7 @@ $ sudo tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share
 
 ## Access at server informations
 
-> Authentification required to visite netdata and Grafana pages.
+> Authentification required to visite netdata page.
 
 ```bash
 $ sudo sh -c "echo -n '[USERNAME]:' >> /etc/nginx/.htpasswd"
