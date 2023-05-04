@@ -100,9 +100,31 @@ After writing the script of the backup, open crontab to schedule the automatic b
 ```bash
 crontab -e
 ```
+What is crontab:
 
-Then we write this line so we have a backup every day at midnight
+Crontab is a system command on Linux and Unix that allows users and administrators to schedule automatic tasks to run at specific times, regular or not. Crontab is an abbreviation of "cron table" and refers to the configuration file that contains the list of scheduled tasks to be executed. Tasks can be shell scripts, system commands, or applications. Crontab is used to automate repetitive tasks such as backups, updates, reports, etc.
+
+- Then we write this line so we have a backup every day at midnight
 
 ```bash
 0 0 * * * /srv/backup.sh
+```
+
+How to make a backup manually:
+```bash
+[Roockbye@projet ~]$ bash /srv/backup.sh 
+```
+
+And how to view all the backups:
+```bash
+[Roockbye@projet ~]$ ls -l /path/to/backup/folder
+total 16
+-rw-r--r--. 1 Roockbye Roockbye 123 May  4 16:45 backup-2023-05-04-16-45-23.tar.gz
+-rw-r--r--. 1 Roockbye Roockbye 134 May  4 16:50 backup-2023-05-04-16-50-56.tar.gz
+-rw-r--r--. 1 Roockbye Roockbye 134 May  4 16:57 backup-2023-05-04-16-57-08.tar.gz
+-rw-r--r--. 1 root     root     134 May  4 16:59 backup-2023-05-04-16-59-01.tar.gz
+```
+Be also aware to give the right like:
+```bash
+[Roockbye@projet ~]$ sudo chown -R Roockbye:Roockbye /path/to/backup/folder
 ```
