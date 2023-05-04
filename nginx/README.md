@@ -146,13 +146,6 @@ $ sudo systemctl restart nginx
 $ sudo tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
 ```
 
-## Configuration generator
-
-- You can also use NGINXConfig to help you :
-
-> [NGINXConfig](https://www.digitalocean.com/community/tools/nginx?global.app.lang=fr)
-
-
 ## Access at server informations
 
 > Authentification required to visite netdata page.
@@ -164,3 +157,9 @@ $ sudo sh -c "echo -n '[USERNAME]:' >> /etc/nginx/.htpasswd"
 ```bash
 $ sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
 ```
+
+## Configuration generator
+
+- You can also use NGINXConfig to help you :
+
+> [NGINXConfig](https://www.digitalocean.com/community/tools/nginx?global.app.lang=fr)
