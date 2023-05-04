@@ -1,5 +1,11 @@
 # Netdata
 
+## Installation
+
+```bash
+$ sudo dnf install netdata
+```
+
 ## Limit acces
 
 ```bash

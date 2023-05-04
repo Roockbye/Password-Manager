@@ -21,7 +21,7 @@ $ sudo tar -czvf /srv/nginx.old_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/s
 $ sudo simplified_setup.sh
 ```
 
-> [simplified_setup.sh](/nginx/simplified_setup.sh)
+> [nginx_simplified_setup.sh](/nginx/nginx_simplified_setup.sh)
 
 > We use [cerbot](/nginx/certbot.md)
 
