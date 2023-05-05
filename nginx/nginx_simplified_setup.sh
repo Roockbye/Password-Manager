@@ -1,3 +1,9 @@
+# !/bin/bash
+# 05/2023
+# Nginx conf install for Password-Manager project
+# https://github.com/Melanieynov/Password-Manager
+
+
 tar -czvf /srv/nginx.old_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
 
 curl -L -O https://github.com/Melanieynov/Password-Manager/archive/refs/heads/main.zip && unzip main.zip
