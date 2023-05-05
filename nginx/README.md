@@ -160,6 +160,10 @@ $ sudo sh -c "echo -n '[USERNAME]:' >> /etc/nginx/.htpasswd"
 $ sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
 ```
 
+```bash
+$ sudo chmod 400 /etc/nginx/.htpasswd
+$ sudo chown nginx:nginx /etc/nginx/.htpasswd
+```
 ## Configuration generator
 
 - You can also use NGINXConfig to help you :
