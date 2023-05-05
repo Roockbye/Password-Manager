@@ -11,6 +11,7 @@ You need rocky linux :
 
 - Public IP
 - Domain name (everything is set for projet.engineer)
+- Your domain name must point to your IP
 
 
 ### Base configuration
