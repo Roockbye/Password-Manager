@@ -13,6 +13,11 @@ $ cat /etc/netdata/netdata.conf | grep connections
 	 allow connections from = localhost
 ```
 
+```bash
+$ cat /etc/netdata/netdata.conf | grep hostname
+        hostname = dashboard.projet.engineer
+```
+
 ## Discord notifications
 
 ```bash

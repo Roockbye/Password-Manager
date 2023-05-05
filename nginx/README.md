@@ -23,7 +23,9 @@ $ sudo simplified_setup.sh
 
 > [nginx_simplified_setup.sh](/nginx/nginx_simplified_setup.sh)
 
-> We use [cerbot](/nginx/certbot.md)
+- We use [cerbot](/nginx/certbot.md)
+
+- scroll to "Access at server informations"
 
 ```bash
 $ sudo systemctl restart nginx
@@ -144,6 +146,18 @@ $ sudo systemctl restart nginx
 
 ```bash
 $ sudo tar -czvf /srv/nginx_$(date +'%F_%H-%M-%S').tar.gz /etc/nginx/ /usr/share/nginx/html/
+```
+
+## Access at server informations
+
+> Authentification required to visite netdata page.
+
+```bash
+$ sudo sh -c "echo -n '[USERNAME]:' >> /etc/nginx/.htpasswd"
+```
+
+```bash
+$ sudo sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"
 ```
 
 ## Configuration generator
