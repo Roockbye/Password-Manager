@@ -6,18 +6,69 @@
 
 - [backup](/security/backup/backup.sh)
 
-After writing the script of the backup, open crontab to schedule the automatic backup
+To know if the backup is up or no:
 
 ```bash
-crontab -e
+[Roockbye@projet ~]$ sudo bash /srv/backup.sh
+tar: Removing leading `/' from member names
+tar: Removing leading `/' from hard link targets
 ```
-What is crontab:
-
-Crontab is a system command on Linux and Unix that allows users and administrators to schedule automatic tasks to run at specific times, regular or not. Crontab is an abbreviation of "cron table" and refers to the configuration file that contains the list of scheduled tasks to be executed. Tasks can be shell scripts, system commands, or applications. Crontab is used to automate repetitive tasks such as backups, updates, reports, etc.
-Then we write this line so we have a backup every day at midnight
 
 ```bash
-0 0 * * * /srv/backup.sh
+[Roockbye@projet ~]$ ls -l /srv/backup
+total 12
+-rw-r--r--. 1 root root  129 May  5 10:00 backup-2023-05-05-10-00-39.tar.gz
+-rw-r--r--. 1 root root  129 May  5 10:00 backup-2023-05-05-10-00-55.tar.gz
+-rw-r--r--. 1 root root 1388 May  5 10:01 backup-2023-05-05-10-01-31.tar.gz
+```
+Now we need to make a service so the script can do a backup every day at midnight:
+
+create your file:
+```bash
+sudo nano /etc/systemd/system/backup.service
+```
+And write this:
+```bash
+# Is a service for a backup
+# 05/05/23
+
+[Unit]
+Description=Service for the backup
+Wants=backupTimer.service
+
+[Service]
+Type=oneshot
+ExecStart=/srv/backup.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+Then create this file:
+```bash
+sudo nano /etc/systemd/system/backupTimer.service
+```
+And then write this in it:
+```bash
+[Unit]
+Description=Timer for the backup
+Requires=backup.service
+
+[Timer]
+Unit=backup.service
+OnUnitActiveSec=24h
+
+[Install]
+WantedBy=multi-user.target
+```
+then:
+```bash
+sudo systemctl daemon-reload
+```
+And:
+```bash
+sudo systemctl enable backupTimer.service
+```
+This will activate the timer
 
 ## Disable Ctrl+Alt+Del key combination
 

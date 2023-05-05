@@ -10,5 +10,5 @@ then
     mkdir -p "$BACKUP_DIR"
 fi
 
-tar -czf "$BACKUP_DIR/backup-$DATE.tar.gz" /opt/passbolt/database_volume /opt/evaluate_loki/.data
+tar -czf "$BACKUP_DIR/backup-$DATE.tar.gz" /opt/passbolt/database_volume /opt/evaluate-loki/
 exit 0
