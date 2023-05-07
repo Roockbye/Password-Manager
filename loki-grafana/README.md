@@ -26,3 +26,8 @@ $ cd /opt/evaluate-loki
 
 $ docker compose up -d
 ```
+
+## Config
+
+> Config of loki
+[.](/loki-grafana/opt/evaluate-loki/loki-config.yaml)
