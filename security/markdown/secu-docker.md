@@ -10,6 +10,9 @@ $ git clone https://github.com/docker/docker-bench-security.git
 $ sudo docker-bench-security/docker-bench-security.sh
 ```
 
+It will give us in output all the elements that pass the security but also the elements in warning and those in between.
+All that allow us to act on these element of security
+
 ## Secure Docker 
 
 ```bash
