@@ -2,7 +2,7 @@
 
 > Log analizer and alerter.
 
-## In progress
+## In progress . . .
 
 ## Setup
 
@@ -30,4 +30,9 @@ $ docker compose up -d
 ## Config
 
 > Config of loki
-[.](/loki-grafana/opt/evaluate-loki/loki-config.yaml)
+
+[loki conf](/loki-grafana/opt/evaluate-loki/loki-config.yaml)
+
+> Config of promtail
+
+[promtail conf](/loki-grafana/opt/evaluate-loki/promtail-config.yaml)
