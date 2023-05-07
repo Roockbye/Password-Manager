@@ -2,4 +2,4 @@
 
 > Log analizer and alerter.
 
-## In grogress
+## In progress
