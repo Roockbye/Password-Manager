@@ -13,7 +13,7 @@ $ sudo bash /srv/backup.sh
 tar: Removing leading `/' from member names
 tar: Removing leading `/' from hard link targets
 ```
-```
+
 Now we need to make a service so the script can do a backup every day at midnight:
 
 create your file:
@@ -140,7 +140,7 @@ Add the names of the users you want to authorize from using cron.
 
 - [checks](/security/markdown/checks.md)
 
-## Ssh configuration
+## SSH configuration
 
 > Distant connection to edit conf
 
