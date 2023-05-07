@@ -90,7 +90,7 @@ net.ipv6.conf.default.disable_ipv6 = 1
 
 > Ban IP 
 
-- [Fail2ban](/security/fail2ban/fail2ban.md)
+- [Fail2ban](/security/markdown/fail2ban/fail2ban.md)
 
 
 ## Keep /boot as read-only
