@@ -13,7 +13,6 @@ You need rocky linux :
 - Domain name (everything is set for projet.engineer)
 - Your domain name must point to your IP
 
-
 ### Base configuration
 
 Update your rocky :
@@ -36,7 +35,6 @@ $ sudo vim /etc/selinux/config
 ```bash
 SELINUX=permissive
 ```
-
 ## Installation
 
 ### Step 1 : Nginx
