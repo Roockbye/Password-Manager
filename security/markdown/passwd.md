@@ -5,8 +5,6 @@ It also takes into account not to use an old password because it represents a se
 
 - For that we need to go to ```system-auth```
 
-The implementation of a new authentication method should not require changes in the configuration or source code of a program or service. This is why applications rely on PAM, which provides them with the primitives necessary to authenticate their users.
-
 auth = Authentication
 
 This handles the authentication of the requester and establishes the rights of the account:
@@ -20,8 +18,7 @@ So we go to ```pam.d/system-auth```
 ```bash
 $ sudo cat /etc/pam.d/system-auth | grep [remember=*]
 ```
-
-(means 5 gen)
+For example, if we write ```remember=5``` (means 5 gen)
 
 The system will remember the last 5 password used so the user don't use it again
 

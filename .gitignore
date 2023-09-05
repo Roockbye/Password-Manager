@@ -6,6 +6,8 @@ nginx/etc/nginx/sites-enabled/forum.conf
 nginx/etc/nginx/sites-enabled/send.conf
 nginx/etc/nginx/sites-enabled/nextcloud.conf
 
+loki-grafana/opt/evaluate-loki/docker-compose.yaml
+
 nginx/usr/share/nginx/html/forum.html
 
 TODO.md

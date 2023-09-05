@@ -8,7 +8,7 @@ $ sudo mkdir /opt/passbolt
 
 $ sudo vim /opt/passbolt/docker-compose.yml
 ```
-> [docker-compose.yml](/heimdall/opt/passbolt/docker-compose.yml)
+> [docker-compose.yml](/passbolt/opt/passblot/docker-compose.yml)
 
 ```bash
 $ sudo find /opt/passbolt/ -type d  -exec chmod 500 {} \;

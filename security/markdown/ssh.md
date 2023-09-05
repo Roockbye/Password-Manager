@@ -28,4 +28,4 @@ $ sudo firewall-cmd --reload
 $ sudo systemctl enable sshd --now
 ```
 
-- [Expensive documentation](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server-fr)
+- [Expansive documentation](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server-fr)

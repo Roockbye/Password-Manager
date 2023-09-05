@@ -55,7 +55,7 @@ SELINUX=permissive
 
 ### Step 4 : Grafana
 
-> [Grafana](/grafana/)
+> [Grafana](/loki-grafana/)
 
 ### Step 5 : Security checks
 

@@ -9,18 +9,11 @@
 To know if the backup is up or no:
 
 ```bash
-[Roockbye@projet ~]$ sudo bash /srv/backup.sh
+$ sudo bash /srv/backup.sh
 tar: Removing leading `/' from member names
 tar: Removing leading `/' from hard link targets
 ```
 
-```bash
-[Roockbye@projet ~]$ ls -l /srv/backup
-total 12
--rw-r--r--. 1 root root  129 May  5 10:00 backup-2023-05-05-10-00-39.tar.gz
--rw-r--r--. 1 root root  129 May  5 10:00 backup-2023-05-05-10-00-55.tar.gz
--rw-r--r--. 1 root root 1388 May  5 10:01 backup-2023-05-05-10-01-31.tar.gz
-```
 Now we need to make a service so the script can do a backup every day at midnight:
 
 create your file:
@@ -97,7 +90,7 @@ net.ipv6.conf.default.disable_ipv6 = 1
 
 > Ban IP 
 
-- [Fail2ban](/security/fail2ban/fail2ban.md)
+- [Fail2ban](/security/markdown/fail2ban.md)
 
 
 ## Keep /boot as read-only
@@ -147,7 +140,7 @@ Add the names of the users you want to authorize from using cron.
 
 - [checks](/security/markdown/checks.md)
 
-## Ssh configuration
+## SSH configuration
 
 > Distant connection to edit conf
 
